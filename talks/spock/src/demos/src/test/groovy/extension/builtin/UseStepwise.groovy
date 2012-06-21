@@ -4,7 +4,7 @@ import spock.lang.Specification
 import spock.lang.Stepwise
 
 @Stepwise
-class StepwiseSpec extends Specification {
+class UseStepwise extends Specification {
     def "step 1"() {
         expect: true
     }
