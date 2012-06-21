@@ -7,9 +7,10 @@ import spock.util.concurrent.BlockingVariable
 import spock.util.concurrent.BlockingVariables
 
 class TheOracleSpec extends Specification {
-  def "talk to the oracle, flawed approach"() {
-    def oracle = new TheOracle()
 
+  def oracle = new TheOracle()
+
+  def "talk to the oracle, flawed approach"() {
     expect:
     oracle.ask("What's the coolest language in town?") { answer ->
       // fails, but too late and in wrong thread
@@ -19,7 +20,6 @@ class TheOracleSpec extends Specification {
   }
 
   def "talk to the oracle, correct approach"() {
-    def oracle = new TheOracle()
     def answer2 = new BlockingVariable<String>(10, TimeUnit.SECONDS)
     def answer1 = new BlockingVariable<String>(10, TimeUnit.SECONDS)
 
@@ -38,7 +38,6 @@ class TheOracleSpec extends Specification {
   }
 
   def "talk to the oracle, slick approach"() {
-    def oracle = new TheOracle()
     // dynamic alternative to BlockingVariable (or multiple thereof)
     def answers = new BlockingVariables(10, TimeUnit.SECONDS)
 
