@@ -1,12 +1,11 @@
 package extension.builtin
 
-import spock.lang.Specification
-import org.junit.rules.TestName
 import org.junit.Rule
 import org.junit.rules.TemporaryFolder
 import spock.lang.Shared
+import spock.lang.Specification
 
-class JUnitRules extends Specification {
+class UseRule extends Specification {
     @Rule TemporaryFolder tempFolder
     @Shared File file
 
