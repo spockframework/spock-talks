@@ -19,6 +19,25 @@ class TheOracleSpec extends Specification {
     }
   }
 
+  def "talk to the oracle, the wasteful and fragile approach"() {
+    def answer1 = null, answer2 = null
+
+    when:
+    oracle.ask("What's the coolest language in town?") { answer ->
+      answer1 = answer
+    }
+    oracle.ask("No, really. What's the coolest language?") { answer ->
+      answer2 = answer
+    }
+
+    then:
+    Thread.sleep 10000
+
+    and:
+    answer1 == "Java"
+    answer2 == "Groovy. But don't tell anyone that you heard it from me."
+  }
+
   def "talk to the oracle, correct approach"() {
     def answer2 = new BlockingVariable<String>(10, TimeUnit.SECONDS)
     def answer1 = new BlockingVariable<String>(10, TimeUnit.SECONDS)

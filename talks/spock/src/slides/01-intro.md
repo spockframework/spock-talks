@@ -2,17 +2,6 @@
 
 Next Level
 
-## About Spock
-
-Spock is a testing and specification framework for Java and Groovy applications.
-
-* Fully JUnit compatible (IDEs, CI etc.)
-* Developer focussed
-* Packed with innovation
-* Excellent IDE support
-
-Runs just like JUnit.
-
 ## About Me
 
 * Principal Engineer @ [Gradleware](http://gradleware.com/)
@@ -25,9 +14,28 @@ Committer to the Spock project, and colleague of Spock lead [Peter Niederwieser]
 
 * Brief introduction to Spock
 * Integrations
-* Extensions
-* Hidden gems
+* Hidden Gems 
 * Next version features
+
+## About Spock
+
+Spock is a testing and specification framework for Java and Groovy applications.
+
+* Fully JUnit compatible (IDEs, CI etc.)
+* Developer focussed
+* Packed with innovation
+* Excellent IDE support
+
+Runs just like JUnit.
+
+Version 0.7 in development.
+
+## Documentation!
+
+We are working on top quality documentation for Spock!
+
+[http://spock-framework.readthedocs.org/](http://spock-framework.readthedocs.org/).
+
 
 ## Java JUnit Example
 
@@ -36,19 +44,19 @@ Committer to the Spock project, and colleague of Spock lead [Peter Niederwieser]
     import static org.junit.Assert.assertEquals;
 
     public class AccountTest {
-        @Test
-        public void withdrawSomeAmount() {
-            Account account = new Account(BigDecimal.valueOf(5));
-            account.withdraw(BigDecimal.valueOf(2));
-            assertEquals(BigDecimal.valueOf(3), account.getBalance());
-        }
+      @Test
+      public void withdrawSomeAmount() {
+        Account account = new Account(BigDecimal.valueOf(5));
+        account.withdraw(BigDecimal.valueOf(2));
+        assertEquals(BigDecimal.valueOf(3), account.getBalance());
+      }
     }
 
 ## Spock Example
 
     import spock.lang.Specification
 
-    class AccountSpec2 extends Specification {
+    class AccountSpec extends Specification {
         def "withdraw some amount"() {
             given:
             def account = new Account(5.0)
@@ -60,10 +68,6 @@ Committer to the Spock project, and colleague of Spock lead [Peter Niederwieser]
             account.balance == 3.0
         }
     }
-
-# Demo
-
-fundamentals/BasicsSpec
 
 ## Blocks
 
@@ -91,20 +95,23 @@ Lifecycle hooks.
     setupSpec() // before any test
     setup() // before each test
     cleanup() // after each test
-    cleanupSpec() // after all tests
+    cleanupSpec() // after last test
 
-## State
+## Verification Styles
 
-Instance variables are *per test method*. 
+Verification conditions (or assertions) in Spock can be any expression.
 
-Actually, each test uses a different instance of the test class.
+    expect:
+    [1,2,3].contains(2)
+    [1,2,3].any { it > 2 }
 
-Use the `@Shared` annotation on a field to share the value *among* test methods.
+Including Hamcrest Matchers.
 
-    String foo // reset each test
-    @Shared String bar // test global
-
-`@Shared` != `static`.
+    import static spock.util.matcher.HamcrestMatchers.closeTo
+    import static spock.util.matcher.HamcrestSupport.that
+    
+    expect:
+    that 2.04, closeTo(2, 0.05) 
 
 ## Exceptions
 
@@ -133,58 +140,4 @@ The `old()` method allows you to retrieve a value as it was *before the preceedi
 
 # Demo
 
-fundamentals/ExceptionsAndOldSpec
-
-## Data Driven
-
-Spock makes writing *parameterised* tests trivial.
-
-    def "some math"() {
-        expect:
-        a + b == c
-        
-        where:
-        a | b || c
-        1 | 1 || 2
-        5 | 5 || 10
-    }
-
-# Demo
-
-datadriven/*
-
-## Interaction Based Testing
-
-Spock has built in support for mocking.
-
-    def sub = Mock(Subscriber)
-    Subscriber sub = Mock()
-
-And a DSL for specifying interactions.
-
-    1 * sub.receive("msg")
-    (1..3) * sub.receive(_)
-    (1.._) * sub.receive(_ as String)
-    1 * sub.receive(!null)
-    1 * sub.receive({it.contains("m")})
-    1 * _./rec.*/("msg")
-
-## Stubbing
-
-Implementations can be stubbed out easily.
-
-    // now returns status code
-    String receive(String msg) { ... } 
-
-<!-- -->
-
-    sub.receive(_) >> "ok"
-    sub.receive(_) >>> ["ok", "ok", "fail"]
-    sub.receive(_) >>> { msg -> msg.size() > 3 ? "ok" : "fail" }
-    
-    // mixed mocking/stubbing
-    3 * sub.receive(_) >>> ["ok", "ok", "fail"]
-
-# Demo
-
-interaction/*
+fundamentals/*

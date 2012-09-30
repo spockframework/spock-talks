@@ -1,5 +1,7 @@
 # Integrations
 
+Spock plays well with others
+
 ## Spring Framework
 
 Works just like Spring + Java JUnit.

@@ -1,4 +1,4 @@
-package condition
+package fundamentals
 
 import spock.lang.Specification
 

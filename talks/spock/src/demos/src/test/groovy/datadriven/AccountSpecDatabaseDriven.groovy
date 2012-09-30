@@ -16,7 +16,7 @@ class AccountSpecDatabaseDriven extends Specification {
         sql.execute("insert into accountdata values (1, 5.0, 2.0, 3.0), (2, 4.0, 0.0, 4.0), (3, 4.0, 4.0, 0.0)")
     }
 
-    def "withdrawing #withdrawn from account with balance #balance leaves #remaining"(int balance, int withdrawn, int remaining) {
+    def "withdrawing #withdrawn from account with balance #balance leaves #remaining"(BigDecimal balance, BigDecimal withdrawn, BigDecimal remaining) {
         given:
         def account = new Account(balance)
 
