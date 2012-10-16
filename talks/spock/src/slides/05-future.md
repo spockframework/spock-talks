@@ -37,6 +37,24 @@ New…
         1 * clapOn("shoulder")
     }
 
+## Polling Conditions
+
+The new `PollingConditions` class implements spin assertions.
+
+* Keep trying for a condition to pass
+* Fail after a timeout
+* Flexible retry interval
+* Increasing retry interval (i.e. delay factor)
+
+## Improved Mocking
+
+* Stubs
+* Spy
+* Groovy
+    * Constructor mocking
+    * Static methods 
+    * Global mocks/spies
+
 # Future features
 
 ## Easier reuse
