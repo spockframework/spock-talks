@@ -2,7 +2,6 @@ package async
 
 import java.util.concurrent.atomic.AtomicInteger
 
-
 class TheOracle {
   private AtomicInteger count = new AtomicInteger(0)
 
