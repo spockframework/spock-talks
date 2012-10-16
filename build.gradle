@@ -211,7 +211,7 @@ project(":talks").subprojects {
 
     task packageZip(type: Zip) {
         from tasks.package
-        archiveName "gradle-${project.name}.zip"
+        archiveName "${project.name}.zip"
         destinationDir buildDir
     }
     
