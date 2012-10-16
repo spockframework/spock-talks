@@ -1,10 +1,11 @@
 package datadriven
 
-import spock.lang.Specification
-
-import spock.lang.Shared
 import groovy.sql.Sql
+
+import spock.lang.Specification
+import spock.lang.Shared
 import spock.lang.Unroll
+
 import fundamentals.Account
 
 @Unroll
@@ -27,6 +28,6 @@ class AccountSpecDatabaseDriven extends Specification {
         account.balance == remaining
 
         where:
-        [balance, withdrawn, remaining] << sql.rows("""select balance, withdrawn, remaining from accountdata""")
+        [balance, withdrawn, remaining] << sql.rows("select balance, withdrawn, remaining from accountdata")
     }
 }
