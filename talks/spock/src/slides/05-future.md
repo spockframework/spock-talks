@@ -1,6 +1,6 @@
 # Spock 0.7
 
-In the works…
+Released!
 
 ## with()
 
@@ -37,9 +37,11 @@ New…
         1 * clapOn("shoulder")
     }
 
+# Future features
+
 ## Easier reuse
 
-Spock 0.7 makes it easier to reuse code and compose tests from components.
+It will be easier to reuse code and compose tests from components.
 
 Old…
 
@@ -112,7 +114,7 @@ Any test methods in the mixin get used.
 
 ## Configuration
 
-Spock 0.7 will feature a vastly improved configuration mechanism.
+Spock will have a vastly improved configuration mechanism.
 
 Configure via: Groovy, JSON, XML, system properties, properties files…
 

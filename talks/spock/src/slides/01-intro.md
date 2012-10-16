@@ -28,7 +28,7 @@ Spock is a testing and specification framework for Java and Groovy applications.
 
 Runs just like JUnit.
 
-Version 0.7 in development.
+Version 0.7 released last week!.
 
 ## Documentation!
 
