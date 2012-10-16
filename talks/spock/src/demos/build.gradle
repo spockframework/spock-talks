@@ -9,7 +9,7 @@ repositories {
 dependencies {
     groovy "org.codehaus.groovy:groovy-all:1.8.8"
     testCompile "org.spockframework:spock-core:0.7-groovy-1.8"
-    testRuntime "com.h2database:h2:1.2.163"
+    testRuntime "com.h2database:h2:1.3.169"
 }
 
 idea.project.jdkName = "1.6"
