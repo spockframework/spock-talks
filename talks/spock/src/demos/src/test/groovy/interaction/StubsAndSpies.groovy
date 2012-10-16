@@ -3,16 +3,6 @@ package interaction
 import spock.lang.Specification
 
 class StubsAndSpies extends Specification {
-    // not strictly related to stubs and spies, but a new feature
-    def "declare interactions upfront"() {
-        def person = Mock(Person) {
-            sing() >> "I can't get no, . . ., sa-tis-fac-tion"
-        }
-
-        expect:
-        person.sing() == "I can't get no, . . ., sa-tis-fac-tion"
-    }
-
     def "stubs"() {
         def person = Stub(Person)
 
